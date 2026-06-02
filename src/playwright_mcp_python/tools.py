@@ -421,10 +421,6 @@ async def browser_handle_dialog(arguments: dict, session: BrowserSession) -> typ
 async def browser_run_code_unsafe(arguments: dict, session: BrowserSession) -> types.CallToolResult:
     page = await session.page()
     code = Path(arguments["filename"]).read_text() if arguments.get("filename") else arguments.get("code", "")
-    if "lambdatest_action:" in code:
-        marker = code[code.index("lambdatest_action:") :]
-        await page.evaluate("value => window.eval(value)", marker)
-        return text_result("Unsafe code executed")
     if code.strip().startswith("()") or code.strip().startswith("async ()"):
         value = await page.evaluate(code)
         return text_result(json.dumps(value, default=str))
