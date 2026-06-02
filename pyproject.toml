@@ -13,7 +13,7 @@ dependencies = [
     "playwright>=1.50.0",
 ]
 authors = [
-    { name = "raka334" },
+    { name = "raka334", email = "readytogave@outlook.com" },
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
