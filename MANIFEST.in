@@ -1,0 +1,11 @@
+include README.md
+recursive-include src/playwright_mcp_python/schemas *.json
+recursive-exclude tests *
+recursive-exclude .opencode *
+recursive-exclude docs *
+recursive-exclude src/playwright_agent *
+recursive-exclude src *.pyc
+recursive-exclude src __pycache__
+prune build
+prune dist
+prune .pytest_cache

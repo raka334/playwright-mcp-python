@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "playwright-mcp-python"
+version = "0.1.0"
+description = "Python-native Playwright MCP server"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]>=1.0.0",
+    "playwright>=1.50.0",
+]
+authors = [
+    { name = "raka334" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+]
+keywords = ["mcp", "playwright", "browser", "automation"]
+
+[project.scripts]
+playwright-mcp-python = "playwright_mcp_python.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["playwright_mcp_python*"]
+
+[tool.setuptools.package-data]
+playwright_mcp_python = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+markers = [
+    "eval: evaluation/exploratory tests",
+    "lambdatest: tests requiring LambdaTest credentials",
+    "slow: slow-running tests",
+    "upstream_live: starts pinned Microsoft Playwright MCP for live comparison",
+]
+testpaths = ["tests"]
